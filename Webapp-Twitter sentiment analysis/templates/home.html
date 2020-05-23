@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css')}}">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Sentiment</span> Analysis</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"> <a href="/home">Home</a> </li>
+            <li> <a href="/result">Result</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+      <section id="showcase">
+        <div class="container">
+          <h1>Twitter Sentiment Analysis.</h1>
+          <p>Predicts the Sentiment of tweets as Positive, Negative, Neutral.</p>
+        </div>
+      </section>
+      <section id="pred">
+        <div class="container">
+          <h1>Enter the Topic of Tweets for Sentiment Analysis.</h1>
+          <form action="/predict" method="POST">
+            <textarea name="Tweet" placeholder="Enter here..." rows="4" cols="50"></textarea>
+            <input type="submit" value="Analyse" class="button">
+          </form>
+        </div>
+      </section>
+      <section id="boxes">
+        <div class="container">
+          <div class="box">
+            <img src="../static/python.jpg" height="87px">
+            <h1 class="t">Machine Learning Code</h1>
+            <p class="p">For Machine Learning code for this project click on the button below.</p>
+            <button type="button" name="Code" class="button2"><a href="https://github.com/NitinNitinRaj/twitter-sentiment-analysis.git" target="_blank" class="code">Code.</a></button>
+          </div>
+          <div class="box">
+            <img src="../static/dis.png">
+            <h1 class="t">Description</h1>
+            <p class="p">Sentiment Analysis is the automated process of analyzing text data and sorting it into sentiments positive, negative or neutral.Twitter sentiment analysis systems allow you to sort large sets of tweets and detect the polarity of each statement automatically.</p>
+          </div>
+          <div class="box">
+            <img src="../static/logo.png" class="team">
+            <h1 class="t">Project done by</h1>
+            <p class="p">Lohith DS</p>
+            <p class="p">Nitinraj</p>
+            <p class="p">Harsha N</p>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <p>Team-LHN, Copyright &copy; 2020</p>
+      </footer>
+
+  </body>
+</html>

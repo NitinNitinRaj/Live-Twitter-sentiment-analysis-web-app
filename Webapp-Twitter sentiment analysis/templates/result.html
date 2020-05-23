@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css')}}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tweets', 'Seniment'],
+          ['Positive',{{P}}],
+          ['Negative',{{N}}],
+          ['Neutral',{{NU}}]
+        ]);
+
+        var options = {
+          title: 'Sentiment Chart',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Emotion', 'Count'],
+          ["Happy",{{happy}}],
+          ["Sad", {{sad}}],
+          ["Angry", {{angry}}],
+          ["Loved", {{loved}}],
+          ['Surprise', {{surprise}}],
+          ['Fearless', {{fearless}}],
+          ['Cheated', {{cheated}}],
+          ['Attracted', {{attracted}}],
+          ['Singledout', {{singledout}}],
+          ['Anxious', {{anxious}}],
+          ['Powerless', {{powerless}}]
+        ]);
+
+        var options = {
+          title: 'Emotion of tweets',
+          width: 600,
+          legend: { position: 'none' },
+          chart: { title: 'Emotions of tweets',
+                   subtitle: 'Emotion count' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Count'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Sentiment</span> Analysis</h1>
+        </div>
+        <nav>
+          <ul>
+            <li> <a href="/home">Home</a> </li>
+            <li class="current"> <a href="/result">Result</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+      <section id="showcase">
+        <div class="container">
+          <h1>Twitter Sentiment Analysis.</h1>
+          <p>Predicts the Sentiment of tweets as Positive, Negative, Neutral.</p>
+        </div>
+      </section>
+      <section>
+        <div class="container1">
+          <div id="piechart_3d" style="width: 750px; height: 500px;"></div>
+          <div id="top_x_div" style="width: 600px; height: 500px;" ></div>
+        </div>
+      </section>
+      <section id ="bor">
+        <div class="container">
+          <h1 id="hea">Seniment of Tweets of the given topic.</h1>
+          <div>
+          {% for key,value in outputs.items() %}
+            <p><span class="tweet1">{{ key }}</span> = <span class="tweet2">{{value}}</span></p>
+            <br>
+          {% endfor %}
+          </div>
+        </div>
+      </section>
+      <footer>
+        <p>Team-LHN, Copyright &copy; 2020</p>
+      </footer>
+
+  </body>
+</html>
