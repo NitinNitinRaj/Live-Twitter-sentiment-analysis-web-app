@@ -1,4 +1,5 @@
-#Twitter Sentiment Analysis Web App
+Twitter Sentiment Analysis Web App
+
 This is a web app that performs sentiment analysis on tweets using the Twitter API. The app is created by Nitinraj, Lohith DS, and Harsha N.
 
 Getting Started
